@@ -5,7 +5,8 @@ RUN set -x && \
     apt-get install -y --no-install-recommends bash bc bluez bluez-hcidump ca-certificates curl git mosquitto-clients xxd && \
     rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/andrewjfreyer/monitor.git /monitor
+RUN mkdir /monitor
+COPY monitor.sh /monitor/
 
 VOLUME ["/monitor", "/config"]
 COPY docker-entrypoint.sh /
